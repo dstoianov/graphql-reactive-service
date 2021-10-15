@@ -1,0 +1,34 @@
+type Query{
+    users:[User]
+    usersByName(name:String):[User]
+}
+
+type Order{
+    id: ID
+    userId: ID
+}
+
+type User{
+    id: ID
+    name: String
+    orders:[Order]
+}
+
+
+type Mutation{
+    addUser(name:String): User
+}
+
+type Subscription{
+    userEvents(userId: ID):  UserEvent
+}
+
+type UserEvent{
+    user: User
+    event: UserEventType
+}
+
+enum UserEventType{
+    UPDATED
+    DELETED
+}
